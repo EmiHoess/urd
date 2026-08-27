@@ -1,0 +1,15 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+find_dependency(urd @PROJECT_VERSION@ CONFIG)
+include("${CMAKE_CURRENT_LIST_DIR}/structured_layoutTargets.cmake")
+
+set(structured_layout_available_components "@structured_layout_components@")
+foreach(component IN LISTS structured_layout_FIND_COMPONENTS)
+    if(component IN_LIST structured_layout_available_components)
+        set(structured_layout_${component}_FOUND TRUE)
+    else()
+        set(structured_layout_${component}_FOUND FALSE)
+    endif()
+endforeach()
+check_required_components(structured_layout)
