@@ -3,17 +3,12 @@
 
 #pragma once
 
+#include <urd/type_list.hpp>
+
 // -------------------------------------------------------------------------
 // Declarations
 // -------------------------------------------------------------------------
 namespace urd {
-    // A compile-time container for a list of types.
-    // The static member `size` holds the number of types the list contains.
-    template <typename... Ts>
-    struct type_list {
-        constexpr static size_t size = sizeof...(Ts);
-    };
-
     // Returns the number of types contained in the given type_list.
     template <typename... Ts>
     constexpr int size(type_list<Ts...>) noexcept;
