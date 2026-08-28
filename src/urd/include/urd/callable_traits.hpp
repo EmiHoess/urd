@@ -25,6 +25,10 @@ struct callable_traits<result (*)(arguments...)>
     : callable_traits<result(arguments...)> {};
 
 template<typename result, typename... arguments>
+struct callable_traits<result (*)(arguments...) noexcept>
+    : callable_traits<result(arguments...)> {};
+
+template<typename result, typename... arguments>
 struct callable_traits<std::function<result(arguments...)>>
     : callable_traits<result(arguments...)> {};
 
